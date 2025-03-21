@@ -1,0 +1,63 @@
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int solution(int a, int b, int c, int d) {
+    int answer = 0;
+    	vector<int> vD = { a, b, c, d };
+
+	sort(vD.begin(), vD.end());
+
+	if (vD[0] == vD[3])
+	{
+		answer =  1111 * vD[0];
+	}
+	else if (vD[0] == vD[2])
+	{
+		answer = (10 * vD[0] + vD[3]) * (10 * vD[0] + vD[3]);
+	}
+	else if (vD[1] == vD[3])
+	{
+		answer = (10 * vD[1] + vD[0]) * (10 * vD[1] + vD[0]);
+	}
+	else if (vD[0] == vD[1]) 
+	{
+		if (vD[2] == vD[3])
+		{
+			answer = (vD[0] + vD[2]) * abs(vD[0] - vD[2]);
+		}
+		else
+		{
+			answer = vD[2] * vD[3];
+		}
+	}
+	else if (vD[1] == vD[2])
+	{
+		if (vD[0] == vD[3])
+		{
+			answer = (vD[0] + vD[1]) * abs(vD[0] - vD[1]);
+		}
+		else
+		{
+			answer = vD[0] * vD[3];
+		}
+	}
+	else if (vD[2] == vD[3]) 
+	{
+		if (vD[0] == vD[1])
+		{
+			answer = (vD[0] + vD[2]) * abs(vD[0] - vD[2]);
+		}
+		else
+		{
+			answer = vD[0] * vD[1];
+		}
+	}
+	else
+	{
+		answer = vD[0];
+	}
+    return answer;
+}
